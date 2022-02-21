@@ -1,5 +1,10 @@
+// function to classify employees to intern card
 
+// function to classify employees to engineer card
 
+// function to classify employees to manager card
+
+// function to generate html layout
 function generateLayout(section) {
     return`
     <!DOCTYPE html>
