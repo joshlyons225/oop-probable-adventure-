@@ -1,12 +1,4 @@
-// function to classify employees to intern card
 
-// function to classify employees to engineer card
-
-// function to classify employees to manager card
-
-// function to generate html layout
-function generateLayout(section) {
-    return`
     <!DOCTYPE html>
     <html lang="en">
 
@@ -37,12 +29,12 @@ function generateLayout(section) {
                     <div class="card">
                         <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all</h3>
                         <p id="intern-content" class="text-center text-dark p-4 card-content">
-                        ${section.name}, 
-                        ${section.title}
+                        Josh Lyons, 
+                        Intern
                         <br>
-                        Employee # ${section.id}
+                        Employee # 12345
                         <br>
-                        ${section.email}
+                        joshl@radco.com
                         </p>
                     </div>
                 </div>
@@ -70,7 +62,4 @@ function generateLayout(section) {
         </footer>
     </body>
     </html>
-    `;
-};
-
-module.exports = generateLayout;
+    
