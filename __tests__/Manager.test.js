@@ -6,6 +6,6 @@ jest.mock('../lib/Employee.js');
 test('creates a new manager', () => {
     const manager = new Manager('Buddy Guy');
     expect(manager.name).toBe('Buddy Guy');
-    expect(manager.id).toEqual(expect.any(Number));
+    expect(manager.id).toEqual(expect.any(String));
     expect(manager.email).toEqual(expect.any(String));
 });
