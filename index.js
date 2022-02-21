@@ -33,6 +33,19 @@ const questions = [
     },
     {
         type: "input",
+        name: "github",
+        message: "What is your GitHub username? (Required)",
+        validate: (employeeGithub) => {
+            if (employeeGithub) {
+                return true;
+            } else {
+                console.log("You must enter GitHub info. Try again.");
+                return false;
+            }
+        }
+    },
+    {
+        type: "input",
         name: "email",
         message: "What is your email address? (Required)",
         validate: (employeeEmail) => {
