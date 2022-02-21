@@ -42,9 +42,9 @@ function generateLayout(section) {
                         <br>
                         Employee # ${section.id}
                         <br>
-                        [${section.github}](https://github.com/${section.github})
+                        <a href="https://github.com/${section.github}">${section.github}</a>
                         <br>
-                        [${section.email}](mailto:${section.email})
+                        <a href="mailto:${section.email}">${section.email}</a>
                         </p>
                     </div>
                 </div>
