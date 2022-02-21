@@ -1,6 +1,7 @@
 // globals
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateLayout = require('./src/pageLayout');
 
 // question array to generate html page data
 const questions = [
@@ -93,6 +94,9 @@ function init() {
   
 // function call to initialize app
   init()
+    .then((pageLayout) => {
+        return generateLayout(pageLayout);
+    })
     .then((createHTML) => {
       return writeToFile("./dist/index.html", createHTML);
 });
