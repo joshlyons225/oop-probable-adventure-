@@ -42,6 +42,20 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: "list",
+        name: "title",
+        message: "What is your employee classification? (Required)",
+        choices: ["Intern", "Engineer", "Manager"],
+        validate: (employeeClass) => {
+            if (employeeClass) {
+                return true;
+            } else {
+                console.log("You must enter your employee classification. Try again.");
+                return false;
+            }
+        }
     }
 ];
 
