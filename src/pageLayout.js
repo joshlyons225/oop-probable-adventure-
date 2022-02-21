@@ -22,30 +22,28 @@ function generateLayout(section) {
     <body>   
         <header>
             <div class="mx-auto text-center">
+                <h1 class="bg-caution text-light align-items-center">Employee Staffing Roster</h1>
             </div>
         </header>
 
         <main class="col-9 d-flex flex-column container-fluid">
-            <div class="row justify-content-center p-4">
-                <button id="jokeGenBtn" class="btn btn-block btn-generate btn-style card">Generate Joke</button>
-            </div>
             <div class="row justify-content-center">
-                <div id="joke-main" class="col-12 col-md-6 col-xl-4 mb-4">
+                <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light d-flex align-items-center">Dadz Joke</h3>
-                        <p id="dad-joke" class="text-center text-dark p-4 card-content"></p>
+                        <h3 class="card-header bg-dark text-light d-flex align-items-center">Interns, Y'all</h3>
+                        <p id="intern-content" class="text-center text-dark p-4 card-content"></p>
                     </div>
                 </div>
-                <div id="yoda-lang" class="col-12 col-md-6 col-xl-4 mb-4">
+                <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light d-flex align-items-center">Yoda'd Joke</h3>
-                        <p id="yoda-joke" class="text-center text-dark p-4 card-content"></p>
+                        <h3 class="card-header bg-dark text-light d-flex align-items-center">Enginerds</h3>
+                        <p id="engineer-content" class="text-center text-dark p-4 card-content"></p>
                     </div>
                 </div>
-                <div id="favorites" class="col-12 col-md-6 col-xl-4 mb-4">
+                <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light d-flex align-items-center">Favorite Yoda'd Jokes</h3>
-                        <p id="favorite-joke" class="text-center text-dark p-4 card-content"></p>
+                        <h3 class="card-header bg-dark text-light d-flex align-items-center">Manager Overlords</h3>
+                        <p id="manager-content" class="text-center text-dark p-4 card-content"></p>
                     </div>
                     </div>
                 </div>
