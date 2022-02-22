@@ -38,8 +38,10 @@ This app was created using Node, NPM, Inquire, and Jest. All styles were achieve
 
 
 ## Walkthrough Video
-https://drive.google.com/file/d/1sWE67AHN0XNGBpqYA3XaV4jqFMGCoKlT/view
+
 
 
 ## Screenshots
-![Screenshot (8)](https://user-images.githubusercontent.com/95392565/154868097-a474b8ef-e3ee-4b25-b3e1-a0fa37db59d6.png)
+![Screenshot (9)](https://user-images.githubusercontent.com/95392565/155211137-94d60e55-9bbe-4acc-93ab-7fce54f98cfe.png)
+
+![Screenshot (10)](https://user-images.githubusercontent.com/95392565/155211224-5df115ae-5a17-4e04-b49c-58bb1b6cd196.png)
