@@ -1,9 +1,3 @@
-// function to classify employees to intern card
-
-// function to classify employees to engineer card
-
-// function to classify employees to manager card
-
 // function to generate html layout
 function generateLayout(section) {
     return`
@@ -35,29 +29,44 @@ function generateLayout(section) {
             <div class="row justify-content-center">
                 <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all</h3>
-                        <p id="intern-content" class="text-center text-dark p-4 card-content">
-                        ${section.name}, 
-                        ${section.title}
+                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlord</h3>
+                        <p id="manager-content" class="text-center text-dark p-4 card-content">
+                        ${section.mgrName}
                         <br>
-                        Employee # ${section.id}
+                        Employee # ${section.mgrId}
                         <br>
-                        <a href="https://github.com/${section.github}">${section.github}</a>
+                        <a href="mailto:${section.mgrEmail}">${section.mgrEmail}</a>
                         <br>
-                        <a href="mailto:${section.email}">${section.email}</a>
+                        Office # ${section.mgrOffice}
                         </p>
                     </div>
                 </div>
                 <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
                         <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds</h3>
-                        <p id="engineer-content" class="text-center text-dark p-4 card-content"></p>
+                        <p id="engineer-content" class="text-center text-dark p-4 card-content">
+                        ${section.egrName}
+                        <br>
+                        Employee # ${section.egrId}
+                        <br>
+                        <a href="mailto:${section.egrEmail}">${section.egrEmail}</a>
+                        <br>
+                        <a href="https://github.com/${section.egrGithub}">${section.egrGithub}</a>
+                        </p>
                     </div>
                 </div>
                 <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlords</h3>
-                        <p id="manager-content" class="text-center text-dark p-4 card-content"></p>
+                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all</h3>
+                        <p id="intern-content" class="text-center text-dark p-4 card-content">
+                        ${section.intName}
+                        <br>
+                        ${section.intId}
+                        <br>
+                        <a href="mailto:${section.intEmail}">${section.intEmail}</a>
+                        <br>
+                        ${section.intSchool}
+                        </p>
                     </div>
                     </div>
                 </div>
