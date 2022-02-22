@@ -70,7 +70,18 @@ const questions = [
                 return false;
             }
         }
-    }
+    },
+    {
+        type: "confirm",
+        name: "anotherEmployee",
+        message: "Do you need to add additional employees?",
+        default: true,
+        validate: (moreStaff) => {
+            if (moreStaff === true) {
+                return questions;
+            }
+        }
+    },
 ];
 
 // function to write html file
