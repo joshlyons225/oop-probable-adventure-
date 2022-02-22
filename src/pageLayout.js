@@ -51,7 +51,7 @@ function generateLayout(section) {
                         <br>
                         <a href="mailto:${section.egrEmail}">${section.egrEmail}</a>
                         <br>
-                        <a href="https://github.com/${section.egrGithub}">${section.egrGithub}</a>
+                        GitHub: <a href="https://github.com/${section.egrGithub}">${section.egrGithub}</a>
                         </p>
                     </div>
                 </div>

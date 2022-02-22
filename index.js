@@ -63,7 +63,7 @@ const mgrQuestions = [
 const engQuestions = [
     {
         type: "input",
-        name: "engName",
+        name: "egrName",
     message: "What is your engineer's name? (Required)",
         validate: (engName) => {
             if (engName) {
