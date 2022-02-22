@@ -182,11 +182,11 @@ function writeToFile(fileName, data) {
           return;
         } else {
           console.clear();
-          console.log("HTML generated!");
+          console.log("HTML generated! Check it out in the dist directory!");
         }
         resolve({
           ok: true,
-          message: "HTML generated!",
+          message: "HTML generated! Check it out in the dist directory!",
         });
       });
     });
@@ -196,9 +196,9 @@ function writeToFile(fileName, data) {
 function init() {
     console.clear();
     console.log(`
-      ======================
-      CUSTOM TEAM GENERATOR   
-      ======================
+      ==================
+      TEAM MANAGER INFO   
+      ==================
       `);
     return inquirer.prompt(mgrQuestions);
 }
@@ -206,9 +206,19 @@ function init() {
 // function call to initialize app
   init()
     .then((engStaff) => {
+        console.log(`
+        ==============
+        ENGINEER INFO   
+        ==============
+        `);
         return inquirer.prompt(engQuestions, engStaff);
     })
     .then((intStaff) => {
+        console.log(`
+        ============
+        INTERN INFO   
+        ============
+        `);
         return inquirer.prompt(internQuestions, intStaff);
     })
     .then((pageLayout) => {
