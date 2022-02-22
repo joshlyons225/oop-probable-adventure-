@@ -29,7 +29,7 @@ function generateLayout(section) {
             <div class="row justify-content-center">
                 <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlord</h3>
+                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlord<i class="fa fa-black-tie p-2"></i></h3>
                         <p id="manager-content" class="text-center text-dark p-4 card-content">
                         ${section.mgrName}
                         <br>
@@ -43,7 +43,7 @@ function generateLayout(section) {
                 </div>
                 <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds</h3>
+                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds<i class="fa fa-diamond p-2"></i></h3>
                         <p id="engineer-content" class="text-center text-dark p-4 card-content">
                         ${section.egrName}
                         <br>
@@ -57,7 +57,7 @@ function generateLayout(section) {
                 </div>
                 <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all</h3>
+                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all<i class="fa fa-bed p-2"></i></h3>
                         <p id="intern-content" class="text-center text-dark p-4 card-content">
                         ${section.intName}
                         <br>
