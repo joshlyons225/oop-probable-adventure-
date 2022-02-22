@@ -64,7 +64,7 @@ const engQuestions = [
     {
         type: "input",
         name: "egrName",
-    message: "What is your engineer's name? (Required)",
+        message: "What is your engineer's name? (Required)",
         validate: (engName) => {
             if (engName) {
                 return true;
@@ -120,7 +120,7 @@ const internQuestions = [
     {
         type: "input",
         name: "intName",
-    message: "What is your intern's name? (Required)",
+        message: "What is your intern's name? (Required)",
         validate: (intName) => {
             if (intName) {
                 return true;
