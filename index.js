@@ -3,14 +3,14 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const generateLayout = require('./src/pageLayout');
 
-// question array to generate html page data
-const questions = [
+// question array to generate manager info
+const mgrQuestions = [
     {
         type: "input",
-        name: "name",
+        name: "mgrName",
         message: "What is your name? (Required)",
-        validate: (employeeName) => {
-            if (employeeName) {
+        validate: (mgrName) => {
+            if (mgrName) {
                 return true;
             } else {
                 console.log("You must enter your name. Try again.");
@@ -20,10 +20,10 @@ const questions = [
     },
     {
         type: "input",
-        name: "id",
+        name: "mgrId",
         message: "What is your employee ID? (Required)",
-        validate: (employeeId) => {
-            if (employeeId) {
+        validate: (mgrId) => {
+            if (mgrId) {
                 return true;
             } else {
                 console.log("You must enter your ID. Try again.");
@@ -33,23 +33,10 @@ const questions = [
     },
     {
         type: "input",
-        name: "github",
-        message: "What is your GitHub username? (Required)",
-        validate: (employeeGithub) => {
-            if (employeeGithub) {
-                return true;
-            } else {
-                console.log("You must enter GitHub info. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "email",
+        name: "mgrEmail",
         message: "What is your email address? (Required)",
-        validate: (employeeEmail) => {
-            if (employeeEmail) {
+        validate: (mgrEmail) => {
+            if (mgrEmail) {
                 return true;
             } else {
                 console.log("You must enter your email address. Try again.");
@@ -58,30 +45,130 @@ const questions = [
         }
     },
     {
-        type: "list",
-        name: "title",
-        message: "What is your employee classification? (Required)",
-        choices: ["Intern", "Engineer", "Manager"],
-        validate: (employeeClass) => {
-            if (employeeClass) {
+        type: "input",
+        name: "mgrOffice",
+        message: "What is your office number? (Required)",
+        validate: (officeNum) => {
+            if (officeNum) {
                 return true;
             } else {
-                console.log("You must enter your employee classification. Try again.");
+                console.log("You must enter your office number. Try again.");
+                return false;
+            }
+        }
+    },
+];
+
+// question array add engineer
+const engQuestions = [
+    {
+        type: "input",
+        name: "engName",
+    message: "What is your engineer's name? (Required)",
+        validate: (engName) => {
+            if (engName) {
+                return true;
+            } else {
+                console.log("You must enter your engineer's name. Try again.");
                 return false;
             }
         }
     },
     {
-        type: "confirm",
-        name: "anotherEmployee",
-        message: "Do you need to add additional employees?",
-        default: true,
-        validate: (moreStaff) => {
-            if (moreStaff === true) {
-                return questions;
+        type: "input",
+        name: "egrId",
+        message: "What is your engineer's employee ID? (Required)",
+        validate: (egrId) => {
+            if (egrId) {
+                return true;
+            } else {
+                console.log("You must enter your engineer's ID. Try again.");
+                return false;
+            }
+        }    
+    },
+    {
+        type: "input",
+        name: "egrEmail",
+        message: "What is your engineer's email address? (Required)",
+        validate: (egrEmail) => {
+            if (egrEmail) {
+                return true;
+            } else {
+                console.log("You must enter your engineer's email address. Try again.");
+                return false;
             }
         }
     },
+    {
+        type: "input",
+        name: "egrGithub",
+        message: "What is your engineer's GitHub username? (Required)",
+        validate: (egrGithub) => {
+            if (egrGithub) {
+                return true;
+            } else {
+                console.log("You must enter engineer's GitHub info. Try again.");
+                return false;
+            }
+        }
+    }
+];
+
+// question array to add intern
+const internQuestions = [
+    {
+        type: "input",
+        name: "intName",
+    message: "What is your intern's name? (Required)",
+        validate: (intName) => {
+            if (intName) {
+                return true;
+            } else {
+                console.log("You must enter your intern's name. Try again.");
+                return false;
+            }
+        }
+    },
+    {
+        type: "input",
+        name: "intId",
+        message: "What is your intern's employee ID? (Required)",
+        validate: (intId) => {
+            if (intId) {
+                return true;
+            } else {
+                console.log("You must enter your intern's ID. Try again.");
+                return false;
+            }
+        }    
+    },
+    {
+        type: "input",
+        name: "intEmail",
+        message: "What is your intern's email address? (Required)",
+        validate: (intEmail) => {
+            if (intEmail) {
+                return true;
+            } else {
+                console.log("You must enter your intern's email address. Try again.");
+                return false;
+            }
+        }
+    },
+    {
+        type: "input",
+        name: "intSchool",
+        message: "What is the name of your intern's school? (Required)",
+        validate: (intSchool) => {
+            if (intSchool) {
+                return true;
+            } else {
+                console.log("You must enter intern's school info. Try again.");
+                return false;
+            }
+        }
+    }
 ];
 
 // function to write html file
@@ -113,11 +200,17 @@ function init() {
       CUSTOM TEAM GENERATOR   
       ======================
       `);
-    return inquirer.prompt(questions);
+    return inquirer.prompt(mgrQuestions);
 }
   
 // function call to initialize app
   init()
+    .then((engStaff) => {
+        return inquirer.prompt(engQuestions, engStaff);
+    })
+    .then((intStaff) => {
+        return inquirer.prompt(internQuestions, intStaff);
+    })
     .then((pageLayout) => {
         return generateLayout(pageLayout);
     })
