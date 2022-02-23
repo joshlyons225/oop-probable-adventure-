@@ -61,7 +61,7 @@ function generateLayout(section) {
                         <p id="intern-content" class="text-center text-dark p-4 card-content">
                         ${section.intName}
                         <br>
-                        ${section.intId}
+                        Employee # ${section.intId}
                         <br>
                         <a href="mailto:${section.intEmail}">${section.intEmail}</a>
                         <br>
