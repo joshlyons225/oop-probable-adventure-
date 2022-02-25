@@ -204,7 +204,7 @@ function init() {
 }
   
 // function call to initialize app
-  init()
+init()
     .then((engStaff) => {
         console.log(`
         ==============
