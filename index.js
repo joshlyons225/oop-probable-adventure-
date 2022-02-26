@@ -1,10 +1,16 @@
 // globals
 const fs = require('fs');
 const inquirer = require('inquirer');
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const generateLayout = require('./src/pageLayout');
 
+// creates master employees array
+const employees = [];
+
 // question array to generate manager info
-const mgrQuestions = [
+const mgrQuestionsArray = [
     {
         type: "input",
         name: "mgrName",
@@ -59,8 +65,21 @@ const mgrQuestions = [
     },
 ];
 
+// function to push newly created manager to employees array
+const mgrQuestions = () => {
+    return inquirer.prompt(mgrQuestionsArray)
+    .then(data => {
+        const manager = new Manager (
+            data.mgrName, data.mgrId, data.mgrEmail, data.mgrOffice
+        )
+        console.log(manager);
+        employees.push(manager)
+    })
+}
+
 // question array add engineer
-const engQuestions = [
+const engQuestions = () => {
+    return inquirer.prompt([
     {
         type: "input",
         name: "egrName",
@@ -113,10 +132,20 @@ const engQuestions = [
             }
         }
     }
-];
+])
+// function to push newly created engineer to employees array
+.then(data => {
+    const engineer = new Engineer (
+        data.egrName, data.egrId, data.egrEmail, data.egrOffice
+    )
+    console.log(engineer);
+    employees.push(engineer)
+    console.log(employees);
+})
+};
 
 // question array to add intern
-const internQuestions = [
+const internQuestionsArray = [
     {
         type: "input",
         name: "intName",
@@ -171,6 +200,18 @@ const internQuestions = [
     }
 ];
 
+// function to push newly created intern to employees array
+const internQuestions = () => {
+    return inquirer.prompt(internQuestionsArray)
+    .then(data => {
+        const intern = new Intern (
+            data.intName, data.intId, data.intEmail, data.intSchool
+        )
+        console.log(intern);
+        employees.push(intern)
+    })
+}
+
 // function to write html file
 function writeToFile(fileName, data) {
     return new Promise((resolve, reject) => {
@@ -192,38 +233,64 @@ function writeToFile(fileName, data) {
     });
 }
 
-// function to initialize app
-function init() {
-    console.clear();
-    console.log(`
-      ==================
-      TEAM MANAGER INFO   
-      ==================
-      `);
-    return inquirer.prompt(mgrQuestions);
+// function to set employee type
+const employeeType = () => {
+    return inquirer.prompt(
+    {
+        type: "list",
+        name: "empType",
+        message: "What type of employee would you like to add?",
+        choices: ["Engineer", "Intern", "None"]
+    })
+    .then(data => {
+        return data.empType
+    }) 
 }
+
+// mgrQuestions();
+// engQuestions();
+
+// // function to initialize app
+// function init() {
+//     console.clear();
+//     console.log(`
+//       ==================
+//       TEAM MANAGER INFO   
+//       ==================
+//       `);
+    mgrQuestions()
+     .then(employeeType)
+     .then(data => {
+         if (data === "Engineer") {
+             return engQuestions;
+         } else if (data === "Intern") {
+             return internQuestions;
+         } else {
+             return
+         }
+     })
   
-// function call to initialize app
-init()
-    .then((engStaff) => {
-        console.log(`
-        ==============
-        ENGINEER INFO   
-        ==============
-        `);
-        return inquirer.prompt(engQuestions, engStaff);
-    })
-    .then((intStaff) => {
-        console.log(`
-        ============
-        INTERN INFO   
-        ============
-        `);
-        return inquirer.prompt(internQuestions, intStaff);
-    })
-    .then((pageLayout) => {
-        return generateLayout(pageLayout);
-    })
-    .then((createHTML) => {
-      return writeToFile("./dist/index.html", createHTML);
-});
+// // function call to initialize app
+// init()
+//     .then((engStaff) => {
+//         console.log(`
+//         ==============
+//         ENGINEER INFO   
+//         ==============
+//         `);
+//         return inquirer.prompt(engQuestions, engStaff);
+//     })
+//     .then((intStaff) => {
+//         console.log(`
+//         ============
+//         INTERN INFO   
+//         ============
+//         `);
+//         return inquirer.prompt(internQuestions, intStaff);
+//     })
+//     .then((pageLayout) => {
+//         return generateLayout(pageLayout);
+//     })
+//     .then((createHTML) => {
+//       return writeToFile("./dist/index.html", createHTML);
+// });
