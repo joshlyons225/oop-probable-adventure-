@@ -247,26 +247,38 @@ const employeeType = () => {
     }) 
 }
 
-// // function to initialize app
-// function init() {
-//     console.clear();
-//     console.log(`
-//       ==================
-//       TEAM MANAGER INFO   
-//       ==================
-//       `);
+// function to initialize app
+console.clear();
+console.log(`
+==================
+TEAM MANAGER INFO   
+==================
+`);
 mgrQuestions()
     .then(employeeType)
     .then(data => {
-        if (data === "Engineer") {
+        do {
+            if (data === "Engineer") {
+            console.log(`
+            ==============
+            ENGINEER INFO   
+            ==============
+            `);
             return engQuestions();
-        } else if (data === "Intern") {
-            return internQuestions();
-        } else {
-            return
+            } else if (data === "Intern") {
+                console.log(`
+                ============
+                INTERN INFO   
+                ============
+                `);
+                return internQuestions();
+                }
         }
-})
-    
+        while (data !== "None") {
+        employeeType();
+        }
+    });
+
   
 // // function call to initialize app
 // init()
