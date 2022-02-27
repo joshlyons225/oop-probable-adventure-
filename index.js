@@ -140,7 +140,6 @@ const engQuestions = () => {
     )
     console.log(engineer);
     employees.push(engineer)
-    console.log(employees);
 })
 };
 
@@ -269,7 +268,8 @@ const employeeType = () => {
          } else {
              return
          }
-     })
+    })
+    console.log(employees);
   
 // // function call to initialize app
 // init()
