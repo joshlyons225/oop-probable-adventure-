@@ -274,9 +274,7 @@ mgrQuestions()
                 return internQuestions();
                 }
         }
-        while (data !== "None") {
-        employeeType();
-        }
+        while (data !== "None")
     });
 
   
