@@ -1,5 +1,6 @@
 // globals
 const fs = require('fs');
+const path = require('path');
 const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -10,60 +11,72 @@ const generateLayout = require('./src/pageLayout');
 const employees = [];
 
 // question array to generate manager info
-const mgrQuestionsArray = [
-    {
-        type: "input",
-        name: "mgrName",
-        message: "What is your name? (Required)",
-        validate: (mgrName) => {
-            if (mgrName) {
-                return true;
-            } else {
-                console.log("You must enter your name. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "mgrId",
-        message: "What is your employee ID? (Required)",
-        validate: (mgrId) => {
-            if (mgrId) {
-                return true;
-            } else {
-                console.log("You must enter your ID. Try again.");
-                return false;
-            }
-        }    
-    },
-    {
-        type: "input",
-        name: "mgrEmail",
-        message: "What is your email address? (Required)",
-        validate: (mgrEmail) => {
-            if (mgrEmail) {
-                return true;
-            } else {
-                console.log("You must enter your email address. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "mgrOffice",
-        message: "What is your office number? (Required)",
-        validate: (officeNum) => {
-            if (officeNum) {
-                return true;
-            } else {
-                console.log("You must enter your office number. Try again.");
-                return false;
-            }
-        }
-    },
-];
+const mgrQuestionsArray = (mgrData) => {
+    return inquirer
+        .prompt([
+                {
+                    type: "input",
+                    name: "mgrName",
+                    message: "What is your name? (Required)",
+                    validate: (mgrName) => {
+                        if (mgrName) {
+                            return true;
+                        } else {
+                            console.log("You must enter your name. Try again.");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: "input",
+                    name: "mgrId",
+                    message: "What is your employee ID? (Required)",
+                    validate: (mgrId) => {
+                        if (mgrId) {
+                            return true;
+                        } else {
+                            console.log("You must enter your ID. Try again.");
+                            return false;
+                        }
+                    }    
+                },
+                {
+                    type: "input",
+                    name: "mgrEmail",
+                    message: "What is your email address? (Required)",
+                    validate: (mgrEmail) => {
+                        if (mgrEmail) {
+                            return true;
+                        } else {
+                            console.log("You must enter your email address. Try again.");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: "input",
+                    name: "mgrOffice",
+                    message: "What is your office number? (Required)",
+                    validate: (officeNum) => {
+                        if (officeNum) {
+                            return true;
+                        } else {
+                            console.log("You must enter your office number. Try again.");
+                            return false;
+                        }
+                    }
+                },
+            ])
+            .then((data) => {
+                const manager = new Manager(
+                    data.mgrName,
+                    data.mgrId,
+                    data.mgrEmail,
+                    data.mgrOffice
+                );
+                employees.push(manager);
+            });
+};
 
 // function to push newly created manager to employees array
 const mgrQuestions = () => {
