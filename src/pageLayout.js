@@ -27,7 +27,7 @@ function generateLayout(section) {
 
         <main class="col-9 d-flex flex-column container-fluid">
             <div class="row justify-content-center">
-                <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
+                <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
                         <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlord<i class="fa fa-black-tie p-2"></i></h3>
                         <p id="manager-content" class="text-center text-dark p-4 card-content">
@@ -45,27 +45,27 @@ function generateLayout(section) {
                     <div class="card">
                         <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds<i class="fa fa-diamond p-2"></i></h3>
                         <p id="engineer-content" class="text-center text-dark p-4 card-content">
-                        ${section.egrName}
+                        ${section.getName()}
                         <br>
-                        Employee # ${section.egrId}
+                        Employee # ${section.getId()}
                         <br>
-                        <a href="mailto:${section.egrEmail}">${section.egrEmail}</a>
+                        <a href="mailto:${section.getEmail()}">${section.getEmail()}</a>
                         <br>
-                        GitHub: <a href="https://github.com/${section.egrGithub}">${section.egrGithub}</a>
+                        GitHub: <a href="https://github.com/${section.getGithub()}">${section.getGithub()}</a>
                         </p>
                     </div>
                 </div>
-                <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
+                <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
                     <div class="card">
                         <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all<i class="fa fa-bed p-2"></i></h3>
                         <p id="intern-content" class="text-center text-dark p-4 card-content">
-                        ${section.intName}
+                        ${section.getName()}
                         <br>
-                        Employee # ${section.intId}
+                        Employee # ${section.getId()}
                         <br>
-                        <a href="mailto:${section.intEmail}">${section.intEmail}</a>
+                        <a href="mailto:${section.getEmail()}">${section.getEmail()}</a>
                         <br>
-                        ${section.intSchool}
+                        ${section.getSchool()}
                         </p>
                     </div>
                     </div>
@@ -79,7 +79,9 @@ function generateLayout(section) {
             &copy 2022 Rad Company, Inc.<i class="fa fa-beer p-2"></i>
             </h4>
         </footer>
+
     </body>
+
     </html>
     `;
 };

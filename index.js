@@ -278,9 +278,9 @@ mgrQuestions()
     .then(employeeType)
     .then(employeeType)
     .then(employeeType)
-//     .then((pageLayout) => {
-//         return generateLayout(pageLayout);
-//     })
-//     .then((createHTML) => {
-//       return writeToFile("./dist/index.html", createHTML);
-// });
+    .then((pageLayout) => {
+        return generateLayout(pageLayout);
+    })
+    .then((createHTML) => {
+      return writeToFile("./dist/index.html", createHTML);
+});
