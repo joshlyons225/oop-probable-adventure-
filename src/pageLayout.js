@@ -1,6 +1,90 @@
-// function to generate html layout
-function generateLayout(section) {
-    return`
+const createTeam = (team) => {
+	console.log("Team: ", team);
+	const managerCard = (manager) => {
+		return `
+        <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="card">
+            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlord<i class="fa fa-black-tie p-2"></i></h3>
+            <p id="manager-content" class="text-center text-dark p-4 card-content">
+            ${manager.getName()}
+            <br>
+            Employee # ${manager.getId()}
+            <br>
+            <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a>
+            <br>
+            Office # ${manager.getOffice()}
+            </p>
+        </div>
+        </div>
+	`;
+	};
+	const engineerCard = (engineer) => {
+		return `
+        <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="card">
+            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds<i class="fa fa-diamond p-2"></i></h3>
+            <p id="engineer-content" class="text-center text-dark p-4 card-content">
+            ${engineer.getName()}
+            <br>
+            Employee # ${engineer.getId()}
+            <br>
+            <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a>
+            <br>
+            GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a>
+            </p>
+        </div>
+        </div>
+	`;
+	};
+	const internCard = (intern) => {
+		return `
+        <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
+        <div class="card">
+            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all<i class="fa fa-bed p-2"></i></h3>
+            <p id="intern-content" class="text-center text-dark p-4 card-content">
+            ${intern.getName()}
+            <br>
+            Employee # ${intern.getId()}
+            <br>
+            <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a>
+            <br>
+            ${intern.getSchool()}
+            </p>
+        </div>
+        </div>
+	`;
+	};
+
+	const html = [];
+
+	// Manager
+	html.push(
+		team
+			.filter((employee) => employee.getRole() === "Manager")
+			.map((manager) => managerCard(manager))
+	);
+
+	// Engineer
+	html.push(
+		team
+			.filter((employee) => employee.getRole() === "Engineer")
+			.map((engineer) => engineerCard(engineer))
+			.join("")
+	);
+
+	// Intern
+	html.push(
+		team
+			.filter((employee) => employee.getRole() === "Intern")
+			.map((intern) => internCard(intern))
+			.join("")
+	);
+	console.log("From Page Gen: ", html);
+	return html.join("");
+};
+
+const generateLayout = (team) => {
+	return `
     <!DOCTYPE html>
     <html lang="en">
 
@@ -26,58 +110,17 @@ function generateLayout(section) {
         </header>
 
         <main class="col-9 d-flex flex-column container-fluid">
-            <div class="row justify-content-center">
-                <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
-                    <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Manager Overlord<i class="fa fa-black-tie p-2"></i></h3>
-                        <p id="manager-content" class="text-center text-dark p-4 card-content">
-                        ${section.mgrName}
-                        <br>
-                        Employee # ${section.mgrId}
-                        <br>
-                        <a href="mailto:${section.mgrEmail}">${section.mgrEmail}</a>
-                        <br>
-                        Office # ${section.mgrOffice}
-                        </p>
-                    </div>
-                </div>
-                <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
-                    <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds<i class="fa fa-diamond p-2"></i></h3>
-                        <p id="engineer-content" class="text-center text-dark p-4 card-content">
-                        ${section.getName()}
-                        <br>
-                        Employee # ${section.getId()}
-                        <br>
-                        <a href="mailto:${section.getEmail()}">${section.getEmail()}</a>
-                        <br>
-                        GitHub: <a href="https://github.com/${section.getGithub()}">${section.getGithub()}</a>
-                        </p>
-                    </div>
-                </div>
-                <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
-                    <div class="card">
-                        <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all<i class="fa fa-bed p-2"></i></h3>
-                        <p id="intern-content" class="text-center text-dark p-4 card-content">
-                        ${section.getName()}
-                        <br>
-                        Employee # ${section.getId()}
-                        <br>
-                        <a href="mailto:${section.getEmail()}">${section.getEmail()}</a>
-                        <br>
-                        ${section.getSchool()}
-                        </p>
-                    </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row justify-content-center">
+    
+        ${createTeam(team)}
+
         </main>
 
         <footer class="bg-transparent mt-auto d-small-flex">
-            <h4 class="text-center"><i class="fa fa-angellist p-2"></i>Made with pride by <a href="https://github.com/joshlyons225/oop-probable-adventure-">Josh Lyons</a>
-            <br>
-            &copy 2022 Rad Company, Inc.<i class="fa fa-beer p-2"></i>
-            </h4>
+        <h4 class="text-center"><i class="fa fa-angellist p-2"></i>Made with pride by <a href="https://github.com/joshlyons225/oop-probable-adventure-">Josh Lyons</a>
+        <br>
+        &copy 2022 Rad Company, Inc.<i class="fa fa-beer p-2"></i>
+        </h4>
         </footer>
 
     </body>
