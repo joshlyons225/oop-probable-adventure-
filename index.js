@@ -78,74 +78,118 @@ const mgrQuestionsArray = (mgrData) => {
             });
 };
 
-// function to push newly created manager to employees array
-const mgrQuestions = () => {
-    return inquirer.prompt(mgrQuestionsArray)
-    .then(data => {
-        const manager = new Manager (
-            data.mgrName, data.mgrId, data.mgrEmail, data.mgrOffice
-        )
-        console.log(manager);
-        employees.push(manager)
-    })
-}
-
-// question array add engineer
-const engQuestions = () => {
-    return inquirer.prompt([
-    {
-        type: "input",
-        name: "egrName",
-        message: "What is your engineer's name? (Required)",
-        validate: (engName) => {
-            if (engName) {
-                return true;
-            } else {
-                console.log("You must enter your engineer's name. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "egrId",
-        message: "What is your engineer's employee ID? (Required)",
-        validate: (egrId) => {
-            if (egrId) {
-                return true;
-            } else {
-                console.log("You must enter your engineer's ID. Try again.");
-                return false;
-            }
-        }    
-    },
-    {
-        type: "input",
-        name: "egrEmail",
-        message: "What is your engineer's email address? (Required)",
-        validate: (egrEmail) => {
-            if (egrEmail) {
-                return true;
-            } else {
-                console.log("You must enter your engineer's email address. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "egrGithub",
-        message: "What is your engineer's GitHub username? (Required)",
-        validate: (egrGithub) => {
-            if (egrGithub) {
-                return true;
-            } else {
-                console.log("You must enter engineer's GitHub info. Try again.");
-                return false;
-            }
-        }
-    }
-])
+// question array to generate general employee class info
+const employeeQuestions = () => {
+    return inquirer
+        .prompt([
+                {
+                    type: "list",
+                    name: "empType",
+                    message: "What type of employee would you like to add?",
+                    choices: ["Engineer", "Intern", "None"],
+                },
+                {
+                    type: "input",
+                    name: "empName",
+                    message: "What is your employee's name? (Required)",
+                    validate: (empName) => {
+                        if (empName) {
+                            return true;
+                        } else {
+                            console.log("You must enter your employee's name. Try again.");
+                            return false;
+                        }
+                    },
+                    when: ({ empType }) => {
+                        if (empType !== "None") {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }   
+                },
+                {
+                    type: "input",
+                    name: "empId",
+                    message: "What is your employee's ID? (Required)",
+                    validate: (empId) => {
+                        if (empId) {
+                            return true;
+                        } else {
+                            console.log("You must enter your employee's ID. Try again.");
+                            return false;
+                        }
+                    },
+                    when: ({ empType }) => {
+                        if (empType !== "None") {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: "input",
+                    name: "empEmail",
+                    message: "What is your employee's email address? (Required)",
+                    validate: (empEmail) => {
+                        if (empEmail) {
+                            return true;
+                        } else {
+                            console.log("You must enter employee's email address. Try again.");
+                            return false;
+                        }
+                    },
+                    when: ({ empType }) => {
+                        if (empType !== "None") {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } 
+                },
+                {
+                    type: "input",
+                    name: "egrGit",
+                    message: "What is your engineer's GitHub username? (Required)",
+                    validate: (egrGit) => {
+                        if (egrGit) {
+                            return true;
+                        } else {
+                            console.log("You must enter engineer's GitHub username. Try again.");
+                            return false;
+                        }
+                    },
+                    when: ({ empType }) => {
+                        if (empType === "Engineer") {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } 
+                },
+                {
+                    type: "input",
+                    name: "intSchool",
+                    message: "What is your intern's school? (Required)",
+                    validate: (intSchool) => {
+                        if (intSchool) {
+                            return true;
+                        } else {
+                            console.log("You must enter intern's school. Try again.");
+                            return false;
+                        }
+                    },
+                    when: ({ empType }) => {
+                        if (empType === "Intern") {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } 
+                }
+            
+        ])
 // function to push newly created engineer to employees array
 .then(data => {
     const engineer = new Engineer (
