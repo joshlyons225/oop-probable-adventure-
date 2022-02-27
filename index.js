@@ -139,7 +139,8 @@ const engQuestions = () => {
         data.egrName, data.egrId, data.egrEmail, data.egrGithub
     )
     console.log(engineer);
-    employees.push(engineer)
+    employees.push(engineer);
+    console.log(employees);
 })
 };
 
@@ -207,7 +208,8 @@ const internQuestions = () => {
             data.intName, data.intId, data.intEmail, data.intSchool
         )
         console.log(intern);
-        employees.push(intern)
+        employees.push(intern);
+        console.log(employees);
     })
 }
 
@@ -243,59 +245,39 @@ const employeeType = () => {
     })
     .then(data => {
         return data.empType
-        
-    }) 
-}
-
-// function to initialize app
-console.clear();
-console.log(`
-==================
-TEAM MANAGER INFO   
-==================
-`);
-mgrQuestions()
-    .then(employeeType)
+    })
     .then(data => {
         do {
             if (data === "Engineer") {
             console.log(`
-            ==============
-            ENGINEER INFO   
-            ==============
+    ==============
+    ENGINEER INFO   
+    ==============
             `);
-            return engQuestions();
+                return engQuestions();
             } else if (data === "Intern") {
                 console.log(`
-                ============
-                INTERN INFO   
-                ============
+    ============
+    INTERN INFO   
+    ============
                 `);
                 return internQuestions();
-                }
+            }
         }
         while (data !== "None")
     });
+}
 
-  
-// // function call to initialize app
-// init()
-//     .then((engStaff) => {
-//         console.log(`
-//         ==============
-//         ENGINEER INFO   
-//         ==============
-//         `);
-//         return inquirer.prompt(engQuestions, engStaff);
-//     })
-//     .then((intStaff) => {
-//         console.log(`
-//         ============
-//         INTERN INFO   
-//         ============
-//         `);
-//         return inquirer.prompt(internQuestions, intStaff);
-//     })
+// function to initialize app
+console.log(`
+    ==================
+    TEAM MANAGER INFO   
+    ==================
+`);
+mgrQuestions()
+    .then(employeeType)
+    .then(employeeType)
+    .then(employeeType)
 //     .then((pageLayout) => {
 //         return generateLayout(pageLayout);
 //     })
