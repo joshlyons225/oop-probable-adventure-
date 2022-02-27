@@ -136,7 +136,7 @@ const engQuestions = () => {
 // function to push newly created engineer to employees array
 .then(data => {
     const engineer = new Engineer (
-        data.egrName, data.egrId, data.egrEmail, data.egrOffice
+        data.egrName, data.egrId, data.egrEmail, data.egrGithub
     )
     console.log(engineer);
     employees.push(engineer)
@@ -244,6 +244,7 @@ const employeeType = () => {
     })
     .then(data => {
         return data.empType
+        
     }) 
 }
 
@@ -262,9 +263,9 @@ const employeeType = () => {
      .then(employeeType)
      .then(data => {
          if (data === "Engineer") {
-             return engQuestions;
+             return engQuestions();
          } else if (data === "Intern") {
-             return internQuestions;
+             return internQuestions();
          } else {
              return
          }
