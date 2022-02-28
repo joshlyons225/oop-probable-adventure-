@@ -38,7 +38,7 @@ This app was created using Node, NPM, Inquire, and Jest. All styles were achieve
 
 
 ## Walkthrough Video
-
+https://drive.google.com/file/d/1EmnVYDm_6Kak2VtYnO85lTntkz9c6bUb/view
 
 
 ## Screenshots
