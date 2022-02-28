@@ -1,6 +1,5 @@
 // globals
 const fs = require('fs');
-const path = require('path');
 const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -11,7 +10,7 @@ const generateLayout = require('./src/pageLayout');
 const employees = [];
 
 // question array to generate manager info
-const mgrQuestionsArray = (mgrData) => {
+const mgrQuestions = (mgrData) => {
     return inquirer
         .prompt([
                 {
@@ -190,154 +189,36 @@ const employeeQuestions = () => {
                 }
             
         ])
-// function to push newly created engineer to employees array
-.then(data => {
-    const engineer = new Engineer (
-        data.egrName, data.egrId, data.egrEmail, data.egrGithub
-    )
-    console.log(engineer);
-    employees.push(engineer);
-    console.log(employees);
-})
-};
 
-// question array to add intern
-const internQuestionsArray = [
-    {
-        type: "input",
-        name: "intName",
-        message: "What is your intern's name? (Required)",
-        validate: (intName) => {
-            if (intName) {
-                return true;
-            } else {
-                console.log("You must enter your intern's name. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "intId",
-        message: "What is your intern's employee ID? (Required)",
-        validate: (intId) => {
-            if (intId) {
-                return true;
-            } else {
-                console.log("You must enter your intern's ID. Try again.");
-                return false;
-            }
-        }    
-    },
-    {
-        type: "input",
-        name: "intEmail",
-        message: "What is your intern's email address? (Required)",
-        validate: (intEmail) => {
-            if (intEmail) {
-                return true;
-            } else {
-                console.log("You must enter your intern's email address. Try again.");
-                return false;
-            }
-        }
-    },
-    {
-        type: "input",
-        name: "intSchool",
-        message: "What is the name of your intern's school? (Required)",
-        validate: (intSchool) => {
-            if (intSchool) {
-                return true;
-            } else {
-                console.log("You must enter intern's school info. Try again.");
-                return false;
-            }
-        }
-    }
-];
+        // push engineer info to employee array and ask if user wants to create another employee
+        .then ((employeeInfo) => {
+            if (employeeInfo.empType === "Engineer") {
+                const engineer = new Engineer(
+                    employeeInfo.empName,
+                    employeeInfo.empId,
+                    employeeInfo.empEmail,
+                    employeeInfo.egrGit
+                );
+                employees.push(engineer);
+                return employeeQuestions();
 
-// function to push newly created intern to employees array
-const internQuestions = () => {
-    return inquirer.prompt(internQuestionsArray)
-    .then(data => {
-        const intern = new Intern (
-            data.intName, data.intId, data.intEmail, data.intSchool
-        )
-        console.log(intern);
-        employees.push(intern);
-        console.log(employees);
-    })
-}
+            // push intern info to employee array and ask if user wants to create another employee
+            } else if (employeeInfo === "Intern") {
+                const intern = new Intern(
+                    employeeInfo.empName,
+                    employeeInfo.empId,
+                    employeeInfo.empEmail,
+                    employeeInfo.intSchool
+                );
+                employees.push(intern);
+                return employeeQuestions();
 
-// function to write html file
-function writeToFile(fileName, data) {
-    return new Promise((resolve, reject) => {
-      fs.writeFile(fileName, data, (err) => {
-        if (err) {
-          console.clear();
-          console.log("Something went wrong. Sad face.");
-          reject(err);
-          return;
-        } else {
-          console.clear();
-          console.log("HTML generated! Check it out in the dist directory!");
-        }
-        resolve({
-          ok: true,
-          message: "HTML generated! Check it out in the dist directory!",
+            // write file to index.html in dist folder
+            } else {
+                fs.writeFileSync("./dist/index.html", pageLayout(employees));
+            }
         });
-      });
-    });
-}
+};        
 
-// function to set employee type
-const employeeType = () => {
-    return inquirer.prompt(
-    {
-        type: "list",
-        name: "empType",
-        message: "What type of employee would you like to add?",
-        choices: ["Engineer", "Intern", "None"]
-    })
-    .then(data => {
-        return data.empType
-    })
-    .then(data => {
-        do {
-            if (data === "Engineer") {
-            console.log(`
-    ==============
-    ENGINEER INFO   
-    ==============
-            `);
-                return engQuestions();
-            } else if (data === "Intern") {
-                console.log(`
-    ============
-    INTERN INFO   
-    ============
-                `);
-                return internQuestions();
-            }
-        }
-        while (data !== "None")
-    });
-}
-
-// function to initialize app
-console.log(`
-    ==================
-    TEAM MANAGER INFO   
-    ==================
-`);
 mgrQuestions()
-    .then(employeeType)
-    .then(employeeType)
-    .then(employeeType)
-    .then((pageLayout) => {
-        return generateLayout(pageLayout);
-    })
-    .then((createHTML) => {
-      return writeToFile("./dist/index.html", createHTML);
-});
+    .then(employeeQuestions);
