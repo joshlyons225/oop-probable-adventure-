@@ -79,7 +79,6 @@ const createTeam = (team) => {
 			.map((intern) => internCard(intern))
 			.join("")
 	);
-	console.log("From Page Gen: ", html);
 	return html.join("");
 };
 

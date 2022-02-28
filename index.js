@@ -221,4 +221,5 @@ const employeeQuestions = () => {
 };        
 
 mgrQuestions()
-    .then(employeeQuestions);
+    .then(employeeQuestions)
+    .then(console.log("HTML file created! Check it out in the dist directory!"));
