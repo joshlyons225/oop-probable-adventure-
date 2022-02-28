@@ -42,6 +42,6 @@ This app was created using Node, NPM, Inquire, and Jest. All styles were achieve
 
 
 ## Screenshots
-![Screenshot (9)](https://user-images.githubusercontent.com/95392565/155211137-94d60e55-9bbe-4acc-93ab-7fce54f98cfe.png)
+![Screenshot (11)](https://user-images.githubusercontent.com/95392565/155908111-078bb55b-5b6a-4125-a0ef-25f3e456f5e8.png)
 
-![Screenshot (10)](https://user-images.githubusercontent.com/95392565/155211224-5df115ae-5a17-4e04-b49c-58bb1b6cd196.png)
+![Screenshot (12)](https://user-images.githubusercontent.com/95392565/155908116-f6bce691-f551-40c4-ad7f-c66fcb71b840.png)
