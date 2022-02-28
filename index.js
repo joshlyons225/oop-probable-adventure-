@@ -215,7 +215,7 @@ const employeeQuestions = () => {
 
             // write file to index.html in dist folder
             } else {
-                fs.writeFileSync("./dist/index.html", pageLayout(employees));
+                fs.writeFileSync("./dist/index.html", generateLayout(employees));
             }
         });
 };        
