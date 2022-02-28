@@ -1,5 +1,7 @@
 const createTeam = (team) => {
 	console.log("Team: ", team);
+
+    // create manager card
 	const managerCard = (manager) => {
 		return `
         <div id="manager-main" class="col-12 col-md-6 col-xl-4 mb-4">
@@ -18,6 +20,8 @@ const createTeam = (team) => {
         </div>
 	`;
 	};
+
+    // create engineer card
 	const engineerCard = (engineer) => {
 		return `
         <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
@@ -36,6 +40,8 @@ const createTeam = (team) => {
         </div>
 	`;
 	};
+
+    //create intern card
 	const internCard = (intern) => {
 		return `
         <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
@@ -96,8 +102,6 @@ const generateLayout = (team) => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
- 
-        <link rel="stylesheet" href="/dist/style.css" />
         <title>Employee Roster Generator</title>
     </head>
 

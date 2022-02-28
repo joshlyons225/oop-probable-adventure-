@@ -203,7 +203,7 @@ const employeeQuestions = () => {
                 return employeeQuestions();
 
             // push intern info to employee array and ask if user wants to create another employee
-            } else if (employeeInfo === "Intern") {
+            } else if (employeeInfo.empType === "Intern") {
                 const intern = new Intern(
                     employeeInfo.empName,
                     employeeInfo.empId,
