@@ -26,7 +26,7 @@ const createTeam = (team) => {
 		return `
         <div id="engineer-main" class="col-12 col-md-6 col-xl-4 mb-4">
         <div class="card">
-            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerds<i class="fa fa-diamond p-2"></i></h3>
+            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Enginerd<i class="fa fa-diamond p-2"></i></h3>
             <p id="engineer-content" class="text-center text-dark p-4 card-content">
             ${engineer.getName()}
             <br>
@@ -46,7 +46,7 @@ const createTeam = (team) => {
 		return `
         <div id="intern-main" class="col-12 col-md-6 col-xl-4 mb-4">
         <div class="card">
-            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Interns, Y'all<i class="fa fa-bed p-2"></i></h3>
+            <h3 class="card-header bg-dark text-light text-center d-flex align-items-center">Intern, Y'all<i class="fa fa-bed p-2"></i></h3>
             <p id="intern-content" class="text-center text-dark p-4 card-content">
             ${intern.getName()}
             <br>

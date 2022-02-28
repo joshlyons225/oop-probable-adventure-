@@ -216,10 +216,10 @@ const employeeQuestions = () => {
             // write file to index.html in dist folder
             } else {
                 fs.writeFileSync("./dist/index.html", generateLayout(employees));
+                console.log("HTML file created! Check it out in the dist directory!")
             }
         });
 };        
 
 mgrQuestions()
     .then(employeeQuestions)
-    .then(console.log("HTML file created! Check it out in the dist directory!"));
